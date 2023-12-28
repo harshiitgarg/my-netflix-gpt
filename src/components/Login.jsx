@@ -19,13 +19,13 @@ const Login = () => {
       <div className="flex justify-center">
         <form
           action="post"
-          className="flex flex-col p-12 bg-black w-1/3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-75 h-3/4 text-white"
+          className="flex flex-col p-12 bg-black w-[450px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-75 h-3/4 text-white"
         >
           <h1 className="m-2 text-3xl mb-8">{isSignInForm ? "Sign in" : "Sign Up"}</h1>
           {!isSignInForm && <input
             type="text"
             placeholder="Full Name"
-            className="p-2 my-4 ml-2 bg-gray-700 rounded-md w-full"
+            className="p-2 my-4 mx-2 bg-gray-700 rounded-md w-full"
           />}
           <input
             type="email"
