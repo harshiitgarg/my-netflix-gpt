@@ -53,13 +53,13 @@ const Header = () => {
           <img
             src={user?.photoURL}
             alt="user-icon"
-            className="w-12 h-12 my-6"
+            className="w-10 h-10 my-6"
           />
           <button className="mx-4 text-3xl" onClick={handleSignOut}>
             {/* <img src={SIGN_OUT_ICON} alt="Sign Out" />
              */}
             {/* Sign Out */}
-            <IoMdExit className="bg-white rounded-md"/>
+            <IoMdExit className="bg-white rounded-md bg-opacity-70 h-10 w-10" name="Sign Out"/>
           </button>
         </div>
       )}
