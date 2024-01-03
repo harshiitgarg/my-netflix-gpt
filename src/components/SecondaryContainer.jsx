@@ -6,7 +6,7 @@ const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
   if (!movies) return;
   return (
-    <div className="bg-black w-screen scrollbar-hide">
+    <div className="bg-black w-screen scrollbar-hide pb-8">
       <div className="-mt-16 relative z-20">
         <MovieList
           title={"Now Playing"}

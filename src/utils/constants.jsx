@@ -22,3 +22,9 @@ export const SUPPORTED_LANGUAGES = [
 ];
 
 export const API_KEY = "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";
+
+export const LOGO =
+  "https://images.ctfassets.net/y2ske730sjqp/821Wg4N9hJD8vs5FBcCGg/9eaf66123397cc61be14e40174123c40/Vector__3_.svg?w=460";
+
+export const DUMMY_IMG =
+  "https://beforeigosolutions.com/wp-content/uploads/2021/12/dummy-profile-pic-300x300-1.png";

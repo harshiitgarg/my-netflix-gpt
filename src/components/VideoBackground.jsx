@@ -13,6 +13,15 @@ const VideoBackground = ({ movieId }) => {
         }
         title="YouTube video player"
       ></iframe>
+      {/* <iframe
+        id="ytplayer"
+        type="text/html"
+        width="720"
+        height="405"
+        src={"https://www.youtube.com/embed/" + trailerVideo[0].key +"?autoplay=1&controls=0&loop=1"}
+        frameborder="0"
+        allowfullscreen
+      ></iframe> */}
     </div>
   );
 };

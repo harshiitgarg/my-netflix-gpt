@@ -1,12 +1,12 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { IoMdExit } from "react-icons/io";
 import { toggleShowgptSearch } from "../utils/gptSlice";
-import { SUPPORTED_LANGUAGES } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { resetLang, setLang } from "../utils/configSlice";
 
 const Header = () => {
@@ -14,6 +14,24 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const showgptSearch = useSelector((store) => store.gptSearch.showgptSearch);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { path } = useParams();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -26,7 +44,9 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        navigate("/browse");
+        if (!path.startsWith("/watch/")) {
+          navigate("/browse");
+        }
       } else {
         // User is signed out
         dispatch(removeUser());
@@ -51,12 +71,12 @@ const Header = () => {
     dispatch(setLang(e.target.value));
   };
   return (
-    <div className="flex justify-between ">
+    <div className="flex">
       <div>
         <img
-          src="src\assets\Netflix-Logo.png"
+          src={LOGO}
           alt="logo"
-          className="w-44 absolute z-20 ml-10"
+          className="w-44 absolute z-20 ml-10 mt-6"
         />
       </div>
       {user && (

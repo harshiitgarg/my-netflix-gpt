@@ -8,23 +8,20 @@ const MovieList = ({ title, movies }) => {
   const [arrowLeftDisable, setArrowLeftDisable] = useState(false);
   const [arrowRightDisable, setArrowRightDisable] = useState(true);
   const handleScroll = (element, speed, distance, step) => {
-    console.log("clicked");
     let scrollAmount = 0;
     const slideTimer = setInterval(() => {
       element.scrollLeft += step;
       scrollAmount += Math.abs(step);
       if (scrollAmount >= distance) clearInterval(slideTimer);
-      if (
-        element.scrollLeft === 0 
-      ) {
+      if (element.scrollLeft === 0) {
         setArrowLeftDisable(false);
         setArrowRightDisable(true);
-      }
-      else if (
-        element.scrollLeft + element.clientWidth >= element.scrollWidth) {
-          setArrowRightDisable(false);
-        }
-      else {
+      } else if (
+        element.scrollLeft + element.clientWidth >=
+        element.scrollWidth
+      ) {
+        setArrowRightDisable(false);
+      } else {
         setArrowLeftDisable(true);
       }
     }, speed);
@@ -39,22 +36,22 @@ const MovieList = ({ title, movies }) => {
           ))}
         </div>
       </div>
-      <div className="flex pl-2">
+      <div className="flex pl-2 justify-between">
         <FaChevronLeft
           className={` ${
             arrowLeftDisable
-              ? "bg-gray-900 bg-opacity-60 cursor-pointer"
+              ? "bg-gray-900 cursor-pointer"
               : "bg-gray-600 cursor-not-allowed"
-          } text-gray-700 my-2 w-8 h-8 p-2 rounded-full `}
-          onClick={() => handleScroll(ref.current, 35, 400, -30)}
+          } text-gray-700 my-2 w-8 h-8 p-2 rounded-full -mt-[135px] z-20`}
+          onClick={() => handleScroll(ref.current, 35, 400, -50)}
         />
         <FaChevronRight
           className={` ${
             arrowRightDisable
-              ? "bg-gray-900 bg-opacity-60 cursor-pointer"
+              ? "bg-gray-900 cursor-pointer"
               : "bg-gray-600 cursor-not-allowed"
-          } text-gray-700 m-2 w-8 h-8 p-2 rounded-full `}
-          onClick={() => handleScroll(ref.current, 35, 400, 30)}
+          } text-gray-700 my-2 w-8 h-8 p-2 rounded-full -mt-[135px] z-20`}
+          onClick={() => handleScroll(ref.current, 35, 400, 50)}
         />
       </div>
     </div>
