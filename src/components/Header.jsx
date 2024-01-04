@@ -1,4 +1,5 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import { FaBookmark } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +13,7 @@ import { resetLang, setLang } from "../utils/configSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // const path = useParams()
   const user = useSelector((store) => store.user);
   const showgptSearch = useSelector((store) => store.gptSearch.showgptSearch);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,8 +46,10 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
+        
         if (!path.startsWith("/watch/")) {
           navigate("/browse");
+          setShowGptButton(false);
         }
       } else {
         // User is signed out
@@ -70,14 +74,13 @@ const Header = () => {
   const handleClick = (e) => {
     dispatch(setLang(e.target.value));
   };
+  const goToWatchList = () => {
+    navigate("/WatchList");
+  };
   return (
     <div className="flex">
       <div>
-        <img
-          src={LOGO}
-          alt="logo"
-          className="w-44 absolute z-20 ml-10 mt-6"
-        />
+        <img src={LOGO} alt="logo" className="w-44 absolute z-20 ml-10 mt-6" />
       </div>
       {user && (
         <div className="flex absolute z-20 right-0">
@@ -92,11 +95,19 @@ const Header = () => {
             </select>
           )}
           <button
-            className="text-white rounded-md h-10 py-2 px-4 bg-purple-600 mx-4 my-6"
-            onClick={handleGptSearch}
+            className="text-white rounded-md h-10 py-2 px-4 bg-yellow-600 my-6 flex"
+            onClick={goToWatchList}
           >
-            {showgptSearch ? "Home" : "GPT Search"}
+            <FaBookmark className="m-1" /> My WatchList
           </button>
+          {(
+            <button
+              className="text-white rounded-md h-10 py-2 px-4 bg-purple-600 mx-4 my-6"
+              onClick={handleGptSearch}
+            >
+              {showgptSearch ? "Home" : "GPT Search"}
+            </button>
+          )}
           <img
             src={user?.photoURL}
             alt="user-icon"

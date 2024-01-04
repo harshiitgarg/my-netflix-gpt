@@ -16,7 +16,7 @@ const Cast = ({ id }) => {
     fetchCast();
   }, []);
   if (castDetails) var firstSixCastMembers = castDetails.slice(0, 10);
-  console.log(firstSixCastMembers);
+//   console.log(firstSixCastMembers);
   return (
     <div className="flex gap-4">
       {castDetails &&

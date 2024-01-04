@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./Login";
 import Browse from "./Browse";
 import Watch from "./Watch";
+import WatchList from "./WatchList";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -16,6 +17,10 @@ const Body = () => {
     {
       path: "/watch/:title",
       element: <Watch />
+    },
+    {
+      path: "WatchList",
+      element: <WatchList />
     }
   ]);
 

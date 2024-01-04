@@ -6,10 +6,14 @@ import { GoDotFill } from "react-icons/go";
 import { IoStar } from "react-icons/io5";
 import Header from "../components/Header";
 import Cast from "./Cast";
-import Footer from "./Footer"
+import Footer from "./Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { addToWatchList, removeFromWatchList } from "../utils/watchListSlice";
 
 const Watch = () => {
   const { title } = useParams();
+  const dispatch = useDispatch();
+  const watchListItem = useSelector((store) => store.watchList.watchList);
   const [movieDetails, setMovieDetails] = useState(null);
   const fetchMovie = async () => {
     const data = await fetch(
@@ -35,6 +39,16 @@ const Watch = () => {
     vote_average,
     id,
   } = movieDetails;
+  const handleAddToWatchList = () => {
+    dispatch(addToWatchList(movieDetails));
+  };
+  const handleRemoveFromWatchList = () => {
+    dispatch(removeFromWatchList({id: id}));
+  };
+  var isPresent;
+  if (watchListItem) {
+    isPresent = watchListItem.some((item) => item.title === movieDetails.title);
+  }
   return (
     movieDetails && (
       <div>
@@ -80,15 +94,25 @@ const Watch = () => {
                 <IoStar className="text-yellow-300 mt-1" />
                 Rating : {Math.round(vote_average)} / 10
               </div>
-              <button className="bg-green-600 py-2 px-4 my-4 rounded-lg">
-                + Add to WatchList
-              </button>
+              {isPresent ? (
+                <button
+                  className="bg-red-600 py-2 px-4 my-4 rounded-lg"
+                  onClick={handleRemoveFromWatchList}
+                >
+                  - Remove from WatchList
+                </button>
+              ) : (
+                <button
+                  className="bg-green-600 py-2 px-4 my-4 rounded-lg"
+                  onClick={handleAddToWatchList}
+                >
+                  + Add to WatchList
+                </button>
+              )}
             </div>
           </div>
-          <div className="text-white text-4xl px-2 py-6">
-            Cast:
-          </div>
-            <Cast id={id} />
+          <div className="text-white text-4xl px-3 py-6">Cast:</div>
+          <Cast id={id} />
         </div>
         <Footer />
       </div>
