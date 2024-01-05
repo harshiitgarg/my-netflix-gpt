@@ -29,6 +29,7 @@ const Watch = () => {
   useEffect(() => {
     fetchMovie();
   }, []);
+
   if (!movieDetails) return;
   const {
     poster_path,
@@ -43,7 +44,7 @@ const Watch = () => {
     dispatch(addToWatchList(movieDetails));
   };
   const handleRemoveFromWatchList = () => {
-    dispatch(removeFromWatchList({id: id}));
+    dispatch(removeFromWatchList({ id: id }));
   };
   var isPresent;
   if (watchListItem) {
@@ -53,17 +54,19 @@ const Watch = () => {
     movieDetails && (
       <div>
         <Header />
-        <div className="bg-gradient-to-r from-black via-black to-gray-900 text-white py-32 px-12 h-full">
-          <div className="p-4 border border-gray-300 flex rounded-lg">
+        <div className="bg-gradient-to-r from-black via-black to-gray-900 text-white py-32 -mt-16 md:px-12 ">
+          <div className="p-4 md:border border-gray-300 flex flex-col md:flex-row rounded-lg">
             <div>
               <img
                 src={IMG_CDN + poster_path}
                 alt="Poster"
-                className="h-80 rounded-lg"
+                className="h-48 md:h-80 rounded-lg md:w-fit md:ml-0 ml-4"
               />
             </div>
-            <div className="mx-4 w-[1100px]">
-              <h1 className="text-5xl my-2">{movieDetails?.title}</h1>
+            <div className="mx-4 md:w-[1100px]">
+              <h1 className="text-2xl md:text-5xl my-2">
+                {movieDetails?.title}
+              </h1>
               <div className="flex my-4 text-gray-400">
                 {genre_ids
                   .filter((id) => genre_ids.includes(id))
@@ -85,7 +88,7 @@ const Watch = () => {
                   </span>
                 )}
               </div>
-              <p className="text-2xl">{overview}</p>
+              <p className="md:text-2xl">{overview}</p>
               <div className="my-2">
                 Release Date: {release_date.toString()}
               </div>
@@ -96,14 +99,14 @@ const Watch = () => {
               </div>
               {isPresent ? (
                 <button
-                  className="bg-red-600 py-2 px-4 my-4 rounded-lg"
+                  className="bg-red-600 py-2 px-4 my-4 rounded-lg md:hover:bg-gradient-to-r from-gray-900 via-black to-gray-900  md:hover:text-red-600"
                   onClick={handleRemoveFromWatchList}
                 >
                   - Remove from WatchList
                 </button>
               ) : (
                 <button
-                  className="bg-green-600 py-2 px-4 my-4 rounded-lg"
+                  className="bg-green-600 py-2 px-4 my-4 rounded-lg md:hover:bg-gradient-to-r from-gray-900 via-black to-gray-900 md:hover:text-green-600"
                   onClick={handleAddToWatchList}
                 >
                   + Add to WatchList

@@ -86,17 +86,17 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute">
+      <div className="-mt-14 md:-mt-20">
         <img
           src="src\assets\bg.jpg"
           alt="background"
-          className="filter brightness-50"
+          className="filter brightness-50 h-screen w-screen object-cover"
         />
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center ">
         <form
           action="post"
-          className="flex flex-col p-12 bg-black w-[450px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-75 h-3/4 text-white"
+          className="flex flex-col p-12 bg-black w-[300px] md:w-[450px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-75 h-3/4 text-white"
           onSubmit={(e) => e.preventDefault()}
         >
           <h1 className="m-2 text-3xl mb-8 font-bold">

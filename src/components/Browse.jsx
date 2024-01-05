@@ -25,9 +25,9 @@ const Browse = () => {
         <>
           <MainContainer />
           <SecondaryContainer />
+          <Footer />
         </>
       )}
-      <Footer />
     </div>
   );
 };

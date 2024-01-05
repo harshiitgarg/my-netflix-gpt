@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { IoMdExit } from "react-icons/io";
 import { toggleShowgptSearch } from "../utils/gptSlice";
 import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
@@ -46,7 +46,7 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        
+
         if (!path.startsWith("/watch/")) {
           navigate("/browse");
           setShowGptButton(false);
@@ -78,15 +78,17 @@ const Header = () => {
     navigate("/WatchList");
   };
   return (
-    <div className="flex">
-      <div>
-        <img src={LOGO} alt="logo" className="w-44 absolute z-20 ml-10 mt-6" />
+    <div className="flex justify-between   overflow-x-hidden ">
+      <div className="relative z-20 mt-4">
+        <Link to="/browse">
+          <img src={LOGO} alt="logo" className="w-24 mx-4 my-2 md:w-44 " />
+        </Link>
       </div>
       {user && (
-        <div className="flex absolute z-20 right-0">
+        <div className="flex z-20 items-center mt-4 md:mt-0">
           {showgptSearch && (
             <select
-              className="p-2 mx-2 my-6 bg-gray-800 rounded-lg text-white"
+              className="p-1 md:p-2 md:mx-2 md:my-6 bg-gray-800 rounded-lg text-white"
               onClick={handleClick}
             >
               {SUPPORTED_LANGUAGES.map((language) => (
@@ -95,30 +97,26 @@ const Header = () => {
             </select>
           )}
           <button
-            className="text-white rounded-md h-10 py-2 px-4 bg-yellow-600 my-6 flex"
+            className="text-white rounded-md md:h-10 text-xs md:text-base md:py-2 md:px-4 p-2 bg-yellow-600 md:hover:text-yellow-600 md:hover:bg-white flex mx-2 md:mx-0"
             onClick={goToWatchList}
           >
-            <FaBookmark className="m-1" /> My WatchList
+            <FaBookmark className="md:m-1 mt-0.5 md:mt-1" /> My WatchList
           </button>
-          {(
+          {
             <button
-              className="text-white rounded-md h-10 py-2 px-4 bg-purple-600 mx-4 my-6"
+              className="text-white rounded-md text-xs md:text-base md:h-10 md:py-2 p-2 md:px-4 bg-purple-600 md:hover:bg-white md:hover:text-purple-600 md:mx-4 mr-2 "
               onClick={handleGptSearch}
             >
               {showgptSearch ? "Home" : "GPT Search"}
             </button>
-          )}
-          <img
-            src={user?.photoURL}
-            alt="user-icon"
-            className="w-10 h-10 my-6 "
-          />
-          <button className="mx-4 text-3xl" onClick={handleSignOut}>
+          }
+          <img src={user?.photoURL} alt="user-icon" className="w-10 h-10 hidden md:inline-block mr-4" />
+          {!showgptSearch && <button className=" mr-2 text-3xl" onClick={handleSignOut}>
             <IoMdExit
-              className="bg-white rounded-md bg-opacity-70 h-10 w-10"
+              className="bg-white rounded-md bg-opacity-70 md:h-10 md:w-10"
               name="Sign Out"
             />
-          </button>
+          </button>}
         </div>
       )}
     </div>

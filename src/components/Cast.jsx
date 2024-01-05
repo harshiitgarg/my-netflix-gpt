@@ -18,7 +18,7 @@ const Cast = ({ id }) => {
   if (castDetails) var firstSixCastMembers = castDetails.slice(0, 10);
 //   console.log(firstSixCastMembers);
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 overflow-x-auto">
       {castDetails &&
         castDetails.length > 0 &&
         firstSixCastMembers.map((detail) => (

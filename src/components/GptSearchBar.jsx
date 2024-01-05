@@ -20,7 +20,7 @@ const GptSearchBar = () => {
     //rest of the functionality yet to be built
   };
   return (
-    <div className="flex justify-center p-52">
+    <div className="flex justify-center md:px-52 pt-8 md:pt-24">
       <form className="bg-black bg-opacity-85 p-4 w-3/4 flex rounded-md">
         <input
           ref={inputText}

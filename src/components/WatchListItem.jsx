@@ -11,16 +11,16 @@ const WatchListItem = ({ original_title, poster_path, genre_ids, id }) => {
         dispatch(removeFromWatchList({ id: id }));
     }
   return (
-    <div className="flex p-4 border my-8 mx-6 shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]">
+    <div className="flex md:p-4 md:border my-8 md:mx-6 mx-2 rounded-lg">
       <img
         src={IMG_CDN + poster_path}
         alt="poster"
-        className="w-32 my-8 mx-4"
+        className="w-32 my-8 mx-4 rounded-lg" 
       />
       <div className="flex py-8 flex-col">
-        <h1 className="text-4xl px-2">{original_title}</h1>
+        <h1 className="text-2xl md:text-4xl px-2">{original_title}</h1>
 
-        <div className="flex my-2 mx-2 text-gray-400">
+        <div className="flex my-4 mx-2 text-gray-400">
           {genre_ids
             .filter((id) => genre_ids.includes(id))
             .map((id) => (
@@ -36,7 +36,7 @@ const WatchListItem = ({ original_title, poster_path, genre_ids, id }) => {
               </div>
             ))}
         </div>
-        <button className="bg-red-600 py-2 px-4 my-4 rounded-lg w-48" onClick={handleRemoveFromWatchList}>
+        <button className="bg-red-600 py-2 px-4 my-1 rounded-lg md:w-48 mx-2 md:hover:bg-gradient-to-r from-gray-900 via-black to-gray-900  md:hover:text-red-600" onClick={handleRemoveFromWatchList}>
           - Remove from WatchList
         </button>
       </div>

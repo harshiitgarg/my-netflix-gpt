@@ -28,9 +28,9 @@ const MovieList = ({ title, movies }) => {
   };
   return (
     <div className="px-4 pb-8 pr-8">
-      <h1 className="text-2xl pl-2 py-4 text-white">{title}</h1>
+      <h1 className="text-2xl md:text-3xl pl-2 py-2 md:py-4 text-white">{title}</h1>
       <div className="flex overflow-x-scroll scrollbar-hide" ref={ref}>
-        <div className="flex">
+        <div className="flex ">
           {movies?.map((video) => (
             <MovieCard movie={video} key={video.id} />
           ))}
@@ -42,7 +42,7 @@ const MovieList = ({ title, movies }) => {
             arrowLeftDisable
               ? "bg-gray-900 cursor-pointer"
               : "bg-gray-600 cursor-not-allowed"
-          } text-gray-700 my-2 w-8 h-8 p-2 rounded-full -mt-[135px] z-20`}
+          } hidden md:inline-block text-gray-700 my-2 w-8 h-8 p-2 rounded-full -mt-[135px] z-20`}
           onClick={() => handleScroll(ref.current, 35, 400, -50)}
         />
         <FaChevronRight
@@ -50,7 +50,7 @@ const MovieList = ({ title, movies }) => {
             arrowRightDisable
               ? "bg-gray-900 cursor-pointer"
               : "bg-gray-600 cursor-not-allowed"
-          } text-gray-700 my-2 w-8 h-8 p-2 rounded-full -mt-[135px] z-20`}
+          } hidden md:inline-block text-gray-700 my-2 w-8 h-8 p-2 rounded-full -mt-[135px] z-20`}
           onClick={() => handleScroll(ref.current, 35, 400, 50)}
         />
       </div>
