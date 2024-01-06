@@ -4,7 +4,7 @@ import Browse from "./Browse";
 import Watch from "./Watch";
 import WatchList from "./WatchList";
 import PLay from "./PLay";
-import GptSearchPage from "./gptSearchPage";
+import GptSearchPage from "./GptSearchPage";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
