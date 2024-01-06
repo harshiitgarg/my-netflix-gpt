@@ -28,3 +28,5 @@ export const LOGO =
 
 export const DUMMY_IMG =
   "https://beforeigosolutions.com/wp-content/uploads/2021/12/dummy-profile-pic-300x300-1.png";
+
+  export const BACKGROUND_IMG = "https://miro.medium.com/v2/resize:fit:1400/1*5lyavS59mazOFnb55Z6znQ.png"

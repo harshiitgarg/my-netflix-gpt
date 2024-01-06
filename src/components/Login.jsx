@@ -10,7 +10,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { USER_AVATAR } from "../utils/constants";
+import { BACKGROUND_IMG, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -88,7 +88,7 @@ const Login = () => {
       <Header />
       <div className="-mt-14 md:-mt-20">
         <img
-          src="src\assets\bg.jpg"
+          src={BACKGROUND_IMG}
           alt="background"
           className="filter brightness-50 h-screen w-screen object-cover"
         />

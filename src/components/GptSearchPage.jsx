@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import { useSelector } from "react-redux";
 import lang from "../utils/lang";
+import { BACKGROUND_IMG } from "../utils/constants";
 
 const GptSearchPage = () => {
   const language = useSelector((store) => store.config.language);
@@ -9,8 +10,8 @@ const GptSearchPage = () => {
     <div className="">
       <Header />
       <img
-        src="\src\assets\bg.jpg"
-        alt=""
+        src={BACKGROUND_IMG}
+        alt="background"
         className="-z-10 absolute h-[1000px] md:h-[717px] w-full object-cover -mt-28 md:-mt-28"
       />
       {/* <gptSearchBar /> */}

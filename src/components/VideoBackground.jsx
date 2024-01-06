@@ -10,7 +10,7 @@ const VideoBackground = ({ movieId }) => {
       {trailerVideo && trailerVideo[0] && <iframe
         className="w-11/12 md:w-[1500px] aspect-video h-64 md:h-[800px] md:-mt-32"
         src={
-          "https://www.youtube.com/embed/" + trailerVideo[0].key + "?controls=0&autoplay=1&mute=1&loop=1&amp;&showinfo=0&amp;autohide=1&modestbranding=1"
+          "https://www.youtube.com/embed/" + trailerVideo[0].key + "?controls=0&autoplay=1&mute=1&loop=1&showinfo=0&playlist=" + trailerVideo[0].key
         }
         title="YouTube video player"
       ></iframe>}

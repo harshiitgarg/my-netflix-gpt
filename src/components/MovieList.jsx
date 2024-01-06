@@ -27,7 +27,7 @@ const MovieList = ({ title, movies }) => {
     }, speed);
   };
   return (
-    <div className="px-4 pb-8 pr-8">
+    <div className="px-4 pb-8 pr-">
       <h1 className="text-2xl md:text-3xl pl-2 py-2 md:py-4 text-white">{title}</h1>
       <div className="flex overflow-x-scroll scrollbar-hide" ref={ref}>
         <div className="flex ">
