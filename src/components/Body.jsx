@@ -3,6 +3,8 @@ import Login from "./Login";
 import Browse from "./Browse";
 import Watch from "./Watch";
 import WatchList from "./WatchList";
+import PLay from "./PLay";
+import GptSearchPage from "./gptSearchPage";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -16,11 +18,19 @@ const Body = () => {
     },
     {
       path: "/watch/:title",
-      element: <Watch />
+      element: <Watch />,
     },
     {
       path: "WatchList",
-      element: <WatchList />
+      element: <WatchList />,
+    },
+    {
+      path: "/play/:title",
+      element: <PLay />,
+    },
+    {
+      path: "/gptSearch",
+      element: <GptSearchPage />
     }
   ]);
 

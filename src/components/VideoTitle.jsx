@@ -8,12 +8,15 @@ const VideoTitle = ({ title, overview }) => {
   const handleMoreInfo = () => {
     navigate(`/watch/${title}`);
   };
+  const handlepLay = () => {
+    navigate(`/play/${title}`);
+  };
   return (
     <div className="pt-72 pl-16  hidden md:inline-block overflow-hidden aspect-video absolute bg-gradient-to-r from-black text-white ">
       <h1 className="w-1/2 text-5xl font-bold">{title}</h1>
       <p className="my-6 text-xl w-1/2 ">{overview}</p>
       <div className="flex">
-        <button className="bg-white p-3 px-8 text-xl my-2 rounded-md text-black hover:bg-opacity-80 flex">
+        <button className="bg-white p-3 px-8 text-xl my-2 rounded-md text-black hover:bg-opacity-80 flex" onClick={handlepLay}>
           <FaPlay className="mt-1.5 mr-2" /> Play
         </button>
         <button

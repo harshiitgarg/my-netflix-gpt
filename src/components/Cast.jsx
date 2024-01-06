@@ -15,17 +15,18 @@ const Cast = ({ id }) => {
   useEffect(() => {
     fetchCast();
   }, []);
-  if (castDetails) var firstSixCastMembers = castDetails.slice(0, 10);
-//   console.log(firstSixCastMembers);
+  if (castDetails) var firstNineCastMembers = castDetails.slice(0, 9);
+//   console.log(firstNineCastMembers);
   return (
-    <div className="flex gap-4 overflow-x-auto">
+    <div className="flex gap-4 md:overflow-x-hidden overflow-x-auto">
       {castDetails &&
         castDetails.length > 0 &&
-        firstSixCastMembers.map((detail) => (
+        firstNineCastMembers.map((detail) => (
           <CastMember
-            original_name={detail.original_name}
-            profile_path={detail.profile_path}
-            character={detail.character}
+            original_name={detail?.original_name}
+            profile_path={detail?.profile_path}
+            character={detail?.character}
+            key={detail?.id}
           />
         ))}
     </div>

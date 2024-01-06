@@ -9,8 +9,11 @@ const gptSlice = createSlice({
     toggleShowgptSearch: (state, action) => {
       state.showgptSearch = !state.showgptSearch;
     },
+    removeShowgptSearch: (state, action) => {
+      state.showgptSearch = false;
+    },
   },
 });
 
 export default gptSlice.reducer;
-export const { toggleShowgptSearch } = gptSlice.actions;
+export const { toggleShowgptSearch, removeShowgptSearch } = gptSlice.actions;
