@@ -1,8 +1,8 @@
 import React from "react";
-import GptSearchBar from "./gptSearchBar";
 import Header from "./Header";
 import { useSelector } from "react-redux";
 import lang from "../utils/lang";
+import GptSearchBar from "./gptSearchBar";
 
 const GptSearchPage = () => {
   const language = useSelector((store) => store.config.language);

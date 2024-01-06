@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import lang from "../utils/lang";
-import { openai } from "../utils/openAi";
 
-const GptSearchBar = () => {
+const gptSearchBar = () => {
   const language = useSelector((store) => store.config.language);
   const inputText = useRef(null);
   const handleClick = async (e) => {
@@ -39,4 +38,4 @@ const GptSearchBar = () => {
   );
 };
 
-export default GptSearchBar;
+export default gptSearchBar;
