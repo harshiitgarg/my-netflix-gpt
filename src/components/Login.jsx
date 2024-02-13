@@ -15,6 +15,7 @@ import { BACKGROUND_IMG, USER_AVATAR } from "../utils/constants";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -28,7 +29,11 @@ const Login = () => {
   const handleClick = () => {
     const message = validateData(email.current.value, password.current.value);
     setErrorMessage(message);
-    if (message) return;
+    setLoading(true);
+    if (message) {
+      setLoading(false);
+      return;
+    }
 
     if (!isSignInForm) {
       //Sign Up logic
@@ -58,13 +63,16 @@ const Login = () => {
             })
             .catch((error) => {
               setErrorMessage(error.message);
+              setLoading(false);
             });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode + "-" + errorMessage);
-        });
+          setLoading(false);
+        })
+        .finally(() => setLoading(false));
     } else {
       signInWithEmailAndPassword(
         auth,
@@ -80,7 +88,9 @@ const Login = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode + "-" + errorMessage);
-        });
+          setLoading(false);
+        })
+        .finally(() => setLoading(false));
     }
   };
   return (
@@ -127,7 +137,7 @@ const Login = () => {
             className="bg-red-700 w-full m-2 p-2 py-3 rounded-md my-8 "
             onClick={handleClick}
           >
-            {isSignInForm ? "Sign In" : "Sign Up"}
+            {loading ? "Loading..." : isSignInForm ? "Sign In" : "Sign Up"}
           </button>
           <div>
             <p className="mx-2 text-gray-600">

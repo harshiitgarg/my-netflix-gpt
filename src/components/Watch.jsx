@@ -32,11 +32,10 @@ const Watch = () => {
   };
   useEffect(() => {
     fetchMovie();
+    window.scrollTo(0, 0);
   }, []);
-  if (loading)
-    return (
-      <Loader />
-    );
+
+  if (loading) return <Loader />;
   if (!movieDetails) return;
   const {
     poster_path,

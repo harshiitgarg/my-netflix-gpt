@@ -16,9 +16,8 @@ const Cast = ({ id }) => {
     fetchCast();
   }, []);
   if (castDetails) var firstNineCastMembers = castDetails.slice(0, 9);
-//   console.log(firstNineCastMembers);
   return (
-    <div className="flex gap-4 md:overflow-x-hidden overflow-x-auto">
+    <div className="flex md:gap-4 md:overflow-x-hidden overflow-x-auto no-scrollbar">
       {castDetails &&
         castDetails.length > 0 &&
         firstNineCastMembers.map((detail) => (

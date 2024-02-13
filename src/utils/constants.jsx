@@ -21,7 +21,7 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "spanish", name: "Spanish" },
 ];
 
-export const API_KEY = "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";
+export const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const LOGO =
   "https://images.ctfassets.net/y2ske730sjqp/821Wg4N9hJD8vs5FBcCGg/9eaf66123397cc61be14e40174123c40/Vector__3_.svg?w=460";
@@ -29,4 +29,5 @@ export const LOGO =
 export const DUMMY_IMG =
   "https://beforeigosolutions.com/wp-content/uploads/2021/12/dummy-profile-pic-300x300-1.png";
 
-  export const BACKGROUND_IMG = "https://miro.medium.com/v2/resize:fit:1400/1*5lyavS59mazOFnb55Z6znQ.png"
+export const BACKGROUND_IMG =
+  "https://miro.medium.com/v2/resize:fit:1400/1*5lyavS59mazOFnb55Z6znQ.png";

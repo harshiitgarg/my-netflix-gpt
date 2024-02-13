@@ -1,10 +1,10 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { FaBookmark } from "react-icons/fa";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { IoMdExit } from "react-icons/io";
 import { removeShowgptSearch, toggleShowgptSearch } from "../utils/gptSlice";
 import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
@@ -15,7 +15,8 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const showgptSearch = useSelector((store) => store.gptSearch.showgptSearch);
-  const { path } = useParams();
+  const location = useLocation();
+  var path = location.pathname.startsWith("/play");
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -28,11 +29,7 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-
-        if (path && !path?.startsWith("/watch/")) {
-          navigate("/browse");
-          setShowGptButton(false);
-        }
+        if (location.pathname === "/") navigate("/browse");
       } else {
         // User is signed out
         dispatch(removeUser());
@@ -67,7 +64,7 @@ const Header = () => {
     dispatch(resetLang());
   };
   return (
-    <div className="flex justify-between   overflow-x-hidden ">
+    <div className={`flex justify-between overflow-x-hidden ${!path && "bg-black"}`}>
       <div className="relative z-20 mt-4">
         <Link to="/browse">
           <img

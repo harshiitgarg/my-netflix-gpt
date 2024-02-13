@@ -2,7 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 @layer utilities {
-    html {
-      scroll-behavior: smooth;
+  html {
+    scroll-behavior: smooth;
+  }
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari, and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
     }
   }
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+  /* border-radius: 5px; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(62, 62, 63);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
