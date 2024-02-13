@@ -13,12 +13,14 @@ const WatchListItem = ({ original_title, poster_path, genre_ids, id }) => {
   };
   return (
     <div className="flex md:p-4 md:border my-8 md:mx-6 mx-2 rounded-lg">
-      <Link to={`/watch/${original_title}`}><img
-        src={IMG_CDN + poster_path}
-        alt="poster"
-        className="w-32 my-8 mx-4 rounded-lg"
-      /></Link>
-      <div className="flex py-8 flex-col">
+      <Link to={`/watch/${original_title}`}>
+        <img
+          src={IMG_CDN + poster_path}
+          alt="poster"
+          className="w-32 my-8 mx-4 rounded-lg"
+        />
+      </Link>
+      <div className="flex py-8 flex-col w-1/2">
         <Link to={`/watch/${original_title}`}>
           <h1 className="text-2xl md:text-4xl px-2">{original_title}</h1>
         </Link>
