@@ -9,7 +9,7 @@ const VideoTitle = ({ title, overview }) => {
     navigate(`/watch/${title}`);
   };
   const handlepLay = () => {
-    navigate(`/play/${title}`);
+    navigate(`/watch/${title}`);
   };
   return (
     <div className="pt-72 pl-16 h-full hidden md:inline-block overflow-hidden aspect-video absolute bg-gradient-to-r from-black text-white ">
