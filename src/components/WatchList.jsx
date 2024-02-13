@@ -33,14 +33,13 @@ const WatchList = () => {
         )}
         {watchList.length !== 0 ? (
           watchList.map((item) => (
-            <Link to={`/watch/${item.original_title}`} key={item.id}>
-              <WatchListItem
-                original_title={item.original_title}
-                poster_path={item.poster_path}
-                genre_ids={item.genre_ids}
-                id={item.id}
-              />
-            </Link>
+            <WatchListItem
+              original_title={item.original_title}
+              poster_path={item.poster_path}
+              genre_ids={item.genre_ids}
+              id={item.id}
+              key={item.id}
+            />
           ))
         ) : (
           <>
